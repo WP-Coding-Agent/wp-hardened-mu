@@ -1,0 +1,11 @@
+{
+  "name": "wp-coding-agent/wp-hardened-mu",
+  "description": "Battle-tested MU-plugin collection — CSP engine, login fortress, REST scoping, integrity monitor",
+  "type": "wordpress-muplugin",
+  "license": "GPL-2.0-or-later",
+  "require": { "php": ">=8.0" },
+  "autoload": { "psr-4": { "Hardened\\": "src/", "Hardened\\CLI\\": "cli/" } },
+  "require-dev": {
+    "phpunit/phpunit": "^9.6"
+  }
+}
