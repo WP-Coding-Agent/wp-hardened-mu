@@ -104,6 +104,10 @@ final class HardenedCommand
      */
     public function rebuild_manifest(array $args): void // phpcs:ignore
     {
+        if (empty($args[0])) {
+            WP_CLI::error('Directory path is required.');
+        }
+
         $dir = rtrim($args[0], '/');
         if (!is_dir($dir)) {
             WP_CLI::error("Directory not found: {$dir}");

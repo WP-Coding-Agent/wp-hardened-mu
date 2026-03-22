@@ -27,8 +27,6 @@ final class NonceInjector
      */
     public static function inject(string $html, string $nonce): string
     {
-        $escaped = preg_quote($nonce, '/');
-
         // Inject into <script> tags without an existing nonce.
         $html = preg_replace_callback(
             '/<script(?![^>]*\bnonce=)([^>]*)>/i',

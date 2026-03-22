@@ -18,7 +18,14 @@ spl_autoload_register( static function ( string $class ): void {
 	}
 
 	$relative = substr( $class, strlen( $prefix ) );
-	$file     = __DIR__ . '/src/' . str_replace( '\\', '/', $relative ) . '.php';
+
+	// CLI classes live in cli/ instead of src/.
+	$cli_prefix = 'CLI\\';
+	if ( strncmp( $relative, $cli_prefix, strlen( $cli_prefix ) ) === 0 ) {
+		$file = __DIR__ . '/cli/' . str_replace( '\\', '/', substr( $relative, strlen( $cli_prefix ) ) ) . '.php';
+	} else {
+		$file = __DIR__ . '/src/' . str_replace( '\\', '/', $relative ) . '.php';
+	}
 
 	if ( file_exists( $file ) ) {
 		require_once $file;
